@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Aditi!</title>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/infetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         :root {
             --primary: #ff4d6d;
@@ -239,31 +239,31 @@
         <h2 style="color: var(--primary); font-size: 1.4rem;">Pop the balloons for memories!</h2>
         <div class="balloon-zone">
             <div class="balloon-wrapper">
-                <div class="balloon" onclick="pop(this, 'img1', 0)">🎈</div>
+                <div class="balloon" onclick="pop(this, 'img1')">🎈</div>
                 <img id="img1" class="revealed-img" src="Img 1.jpg" alt="Memory 1">
             </div>
             <div class="balloon-wrapper">
-                <div class="balloon" onclick="pop(this, 'img2', 1)" style="background: radial-gradient(circle at 30% 30%, #ffb3c1, #ff8fa3, #ff4d6d);">🎈</div>
+                <div class="balloon" onclick="pop(this, 'img2')" style="background: radial-gradient(circle at 30% 30%, #ffb3c1, #ff8fa3, #ff4d6d);">🎈</div>
                 <img id="img2" class="revealed-img" src="Img 2.jpg" alt="Memory 2">
             </div>
             <div class="balloon-wrapper">
-                <div class="balloon" onclick="pop(this, 'img3', 2)" style="background: radial-gradient(circle at 30% 30%, #ff8fa3, #fb6f92, #c9184a);">🎈</div>
+                <div class="balloon" onclick="pop(this, 'img3')" style="background: radial-gradient(circle at 30% 30%, #ff8fa3, #fb6f92, #c9184a);">🎈</div>
                 <img id="img3" class="revealed-img" src="Img 3.jpg" alt="Memory 3">
             </div>
             <div class="balloon-wrapper">
-                <div class="balloon" onclick="pop(this, 'img4', 3)" style="background: radial-gradient(circle at 30% 30%, #ffb3c1, #ff758f, #a4133c);">🎈</div>
+                <div class="balloon" onclick="pop(this, 'img4')" style="background: radial-gradient(circle at 30% 30%, #ffb3c1, #ff758f, #a4133c);">🎈</div>
                 <img id="img4" class="revealed-img" src="Img 4.jpg" alt="Memory 4">
             </div>
             <div class="balloon-wrapper">
-                <div class="balloon" onclick="pop(this, 'img5', 4)" style="background: radial-gradient(circle at 30% 30%, #ff8fa3, #ff4d6d, #800f2f);">🎈</div>
+                <div class="balloon" onclick="pop(this, 'img5')" style="background: radial-gradient(circle at 30% 30%, #ff8fa3, #ff4d6d, #800f2f);">🎈</div>
                 <img id="img5" class="revealed-img" src="Img 5.jpg" alt="Memory 5">
             </div>
             <div class="balloon-wrapper">
-                <div class="balloon" onclick="pop(this, 'img6', 5)" style="background: radial-gradient(circle at 30% 30%, #ffb3c1, #fb6f92, #c9184a);">🎈</div>
+                <div class="balloon" onclick="pop(this, 'img6')" style="background: radial-gradient(circle at 30% 30%, #ffb3c1, #fb6f92, #c9184a);">🎈</div>
                 <img id="img6" class="revealed-img" src="Img 6.jpg" alt="Memory 6">
             </div>
             <div class="balloon-wrapper">
-                <div class="balloon" onclick="pop(this, 'img7', 6)" style="background: radial-gradient(circle at 30% 30%, #ff758f, #ff4d6d, #590d22);">🎈</div>
+                <div class="balloon" onclick="pop(this, 'img7')" style="background: radial-gradient(circle at 30% 30%, #ff758f, #ff4d6d, #590d22);">🎈</div>
                 <img id="img7" class="revealed-img" src="Img 7.jpg" alt="Memory 7">
             </div>
         </div>
@@ -272,35 +272,28 @@
     <script>
         let audioCtx = null;
 
-        // NEW: Synthesizes melodic piano notes based on which balloon is popped
-        function playPianoPop(index) {
+        // Realistic procedural audio "pop" effect generator
+        function playBurstSound() {
             try {
                 if (!audioCtx) {
                     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
                 }
                 
-                // Melodic major scale frequencies (C5, D5, E5, G5, A5, C6, E6)
-                const pianoNotes = [523.25, 587.33, 659.25, 783.99, 880.00, 1046.50, 1318.51];
-                const baseFreq = pianoNotes[index % pianoNotes.length];
-
-                // Play standard note and its harmonizing fifth together for a lush "3D" acoustic ring
-                [baseFreq, baseFreq * 1.5].forEach((freq, idx) => {
-                    let osc = audioCtx.createOscillator();
-                    let gainNode = audioCtx.createGain();
-                    
-                    osc.type = 'triangle'; // Gives it a smoother, warm wood-like tone closer to a piano key
-                    osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-                    
-                    // Emulate piano key velocity decay envelope
-                    gainNode.gain.setValueAtTime(idx === 0 ? 0.3 : 0.15, audioCtx.currentTime);
-                    gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.8);
-                    
-                    osc.connect(gainNode);
-                    gainNode.connect(audioCtx.destination);
-                    
-                    osc.start();
-                    osc.stop(audioCtx.currentTime + 0.82);
-                });
+                let osc = audioCtx.createOscillator();
+                let gainNode = audioCtx.createGain();
+                
+                osc.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(170, audioCtx.currentTime); 
+                osc.frequency.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+                
+                gainNode.gain.setValueAtTime(0.5, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+                
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.12);
             } catch(e) {
                 console.log("Audio synthesis blocked or not supported");
             }
@@ -330,8 +323,8 @@
             window.scrollTo(0,0);
         }
 
-        function pop(el, imgId, index) {
-            playPianoPop(index);
+        function pop(el, imgId) {
+            playBurstSound();
 
             confetti({ particleCount: 60, spread: 60, origin: { y: 0.65 } });
             el.classList.add('fly');

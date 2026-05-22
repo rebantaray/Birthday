@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday My Love</title>
+    <title>Happy Birthday Aditi!</title>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         :root {
@@ -70,13 +70,13 @@
         
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* --- THE CAKE (Responsive Scaling) --- */
+        /* --- THE CAKE --- */
         .cake-container {
             position: relative; 
             height: 280px; 
             width: 250px; 
             margin: 30px auto;
-            transform: scale(0.9); /* Scales down for smaller mobiles */
+            transform: scale(0.9);
         }
         @media (min-width: 600px) { .cake-container { transform: scale(1.1); margin: 50px auto; } }
 
@@ -121,7 +121,7 @@
         /* --- BALLOONS --- */
         .balloon-zone { 
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 2x2 grid on mobile */
+            grid-template-columns: repeat(2, 1fr);
             gap: 15px; 
             margin-top: 20px;
             width: 100%;
@@ -160,13 +160,13 @@
 <body>
 
     <div id="intro-overlay">
-        <h1 style="color: var(--primary); margin-bottom: 5px; font-size: 1.8rem;">A Surprise for You</h1>
+        <h1 style="color: var(--primary); margin-bottom: 5px; font-size: 1.8rem;">A Surprise for My Sister</h1>
         <p style="margin-bottom: 25px;">Turn your volume up ❤️</p>
-        <button class="btn-start" onclick="start()">Start Our Journey</button>
+        <button class="btn-start" onclick="start()">Open the Surprise</button>
     </div>
 
-    <audio id="guitarMusic" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
+    <audio id="birthdayMusic" loop>
+        <source src="https://audio.jofreemusic.com/jf-free/Happy%20Birthday%20To%20You%20%28Orchestral%20Version%20-%20Short%29.mp3" type="audio/mpeg">
     </audio>
 
     <nav id="navbar">
@@ -176,27 +176,27 @@
     </nav>
 
     <div class="page active" id="home">
-        <h1 style="font-size: 2rem; margin: 20px 0;">Happy Birthday!</h1>
+        <h1 style="font-size: 2rem; margin: 20px 0;">Happy Birthday, Aditi!</h1>
         <div class="cake-container">
             <div class="tier bottom"></div>
             <div class="tier mid"></div>
-            <div class="tier top"><div class="name-banner">KAASHVI</div></div>
+            <div class="tier top"><div class="name-banner">ADITI</div></div>
             <div class="candle"><div class="flame"></div></div>
         </div>
-        <p style="font-style: italic; opacity: 0.8; padding: 0 20px;">"You make the world a more beautiful place."</p>
+        <p style="font-style: italic; opacity: 0.8; padding: 0 20px;">"To the best sister in the whole world."</p>
     </div>
 
     <div class="page" id="message">
         <div class="message-card">
-            <h2 style="color: var(--primary); font-size: 1.4rem;">To My Beautiful Soulmate,</h2>
+            <h2 style="color: var(--primary); font-size: 1.4rem;">To My Amazing Sister,</h2>
             <div style="text-align: left; font-size: 0.95rem;">
-                <p>To the one who sees the world with kindness in her eyes,<br>And offers warmth that catches me by surprise.</p>
-                <p>You listen with a heart so open and so wide,<br>With a gentle, caring spirit you never try to hide.</p>
-                <p>I love you for the way you are, so steady and so true,<br>There’s a magic in the quiet things that only you can do.</p>
-                <p>And though we walk this path as friends, I often find it’s more—<br>A deeper kind of feeling than I’ve ever known before.</p>
-                <p>My world is simply brighter just for knowing you Kaashvi.</p>
+                <p>From childhood days and shared fights over the remote,<br>To the sweet, quiet moments that I fondly quote.</p>
+                <p>You’ve been my constant anchor, right from the very start,<br>A built-in best friend who holds a huge place in my heart.</p>
+                <p>I love you for your laughter, your wisdom, and your grace,<br>No matter where life takes us, no one can fill your place.</p>
+                <p>Thank you for always listening and for being so true,<br>The world is infinitely brighter because of a sister like you.</p>
+                <p>Wishing you the happiest birthday ever, Aditi!</p>
             </div>
-            <p><b>I love you! ❤️</b></p>
+            <p><b>Happy Birthday! ❤️</b></p>
         </div>
     </div>
 
@@ -224,7 +224,7 @@
 
     <script>
         function start() {
-            const music = document.getElementById('guitarMusic');
+            const music = document.getElementById('birthdayMusic');
             music.play().catch(e => console.log("Audio play blocked"));
             
             document.getElementById('intro-overlay').style.opacity = '0';

@@ -166,7 +166,7 @@
     </div>
 
     <audio id="birthdayMusic" loop>
-        <source src="https://audio.jofreemusic.com/jf-free/Happy%20Birthday%20To%20You%20%28Orchestral%20Version%20-%20Short%29.mp3" type="audio/mpeg">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
     </audio>
 
     <nav id="navbar">
@@ -221,15 +221,15 @@
             </div>
             <div class="balloon-wrapper">
                 <div class="balloon" onclick="pop(this, 'img5')" style="background: #ff758f;">🎈</div>
-                <img id="img4" class="revealed-img" src="Img 5.jpg" alt="Memory 4">
+                <img id="img5" class="revealed-img" src="Img 5.jpg" alt="Memory 5">
             </div>
             <div class="balloon-wrapper">
                 <div class="balloon" onclick="pop(this, 'img6')" style="background: #ff758f;">🎈</div>
-                <img id="img4" class="revealed-img" src="Img 6.jpg" alt="Memory 4">
+                <img id="img6" class="revealed-img" src="Img 6.jpg" alt="Memory 6">
             </div>
             <div class="balloon-wrapper">
                 <div class="balloon" onclick="pop(this, 'img7')" style="background: #ff758f;">🎈</div>
-                <img id="img4" class="revealed-img" src="Img 7.jpg" alt="Memory 4">
+                <img id="img7" class="revealed-img" src="Img 7.jpg" alt="Memory 7">
             </div>
         </div>
     </div>
@@ -237,7 +237,7 @@
     <script>
         function start() {
             const music = document.getElementById('birthdayMusic');
-            music.play().catch(e => console.log("Audio play blocked"));
+            music.play().catch(e => console.log("Audio play blocked", e));
             
             document.getElementById('intro-overlay').style.opacity = '0';
             setTimeout(() => {
